@@ -7,16 +7,16 @@ int main()
 	int i = 0, j = 0;
 	int num = 0;
 	int c = 0;
-    while (a[num] != '0'){ 
-	if ((a[num] >= 'a') & (a[num] <= 'z'))
+	while (a[num] != '\0'){ 
+	if ((a[num] >= 'a') && (a[num] <= 'z'))
 		{
 			b[num] = a[num] - 'a' + 10;
 			num++;
 			continue;
 		}
-		if ((a[num] >= 'A') & (a[num] <= 'Z'))
+		if ((a[num] >= 'A') && (a[num] <= 'Z'))
 		{
-			b[num] = a[num] - 'A' + 10;
+			b[num = a[num] - 'A' + 10];
 			num++;
 			continue;
 		}
