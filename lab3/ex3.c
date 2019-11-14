@@ -1,34 +1,33 @@
 #include<stdio.h>
 #include<math.h>
-int main(void)
+int main()
 {
 	char a[20];
 	int b[20] = { 0 };
 	int i = 0, j = 0;
-	int sum = 0;
+	int num = 0;
 	int c = 0;
-    gets(a);
-    while (a[sum] != '\0'){ 
-	if ((a[sum] >= 'a') && (a[sum] <= 'z'))
+    while (a[num] != '0'){ 
+	if ((a[num] >= 'a') & (a[num] <= 'z'))
 		{
-			b[sum] = a[sum] - 'a' + 10;
-			sum++;
+			b[num] = a[num] - 'a' + 10;
+			num++;
 			continue;
 		}
-		if ((a[sum] >= 'A') && (a[sum] <= 'Z'))
+		if ((a[num] >= 'A') & (a[num] <= 'Z'))
 		{
-			b[sum] = a[sum] - 'A' + 10;
-			sum++;
+			b[num] = a[num] - 'A' + 10;
+			num++;
 			continue;
 		}
-		b[sum] = a[sum] - '0';
-		sum++;
+		b[num] = a[num] - '0';
+		num++;
 	}
-	for (i = 0; i < sum; i++)
+	for (i = 0; i < num; i++)
 	{
-		b[sum - i - 1] = b[sum - i - 1] * pow(16, i);
+		b[num - i - 1] = b[num - i - 1] * pow(16, i);
 	}
-	for (j = 0; j < sum; j++)
+	for (j = 0; j < num; j++)
 	{
 		c = c + b[j];
 	}
