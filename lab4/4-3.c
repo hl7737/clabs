@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
+#define MAXOP  100
 #define NUMBER '0'
 int getch(void);
 void ungetch(int);
