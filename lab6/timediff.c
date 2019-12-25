@@ -1,19 +1,35 @@
-#include <stdio.h>
-#include <stdlib.h>
-int timediff(int year_start, int month_start, int time_start, int year_end, int month_end, int time_end)
+#include<stdio.h>
+#include<stdlib.h>
+static char daytab[2][13]={
+    {0,31,28,31,30,31,30,31,31,30,31,30,31},
+    {0,31,29,31,30,31,30,31,31,30,31,30,31}
+};
+int day_of_year(int year,int month,int day)
 {
-       int y2, m2, t2;
-       int y1, m1, t1;
-       m1 = (month_start + 9) % 12;
-       y1 = year_start - m1/10;
-       t1 = 365*y1 + y1/4 - y1/100 + y1/400 + (m1*306 + 5)/10 + (time_start - 1);
-       m2 = (month_end + 9) % 12;
-       y2 = year_end - m2/10;
-       t2 = 365*y2 + y2/4 - y2/100 + y2/400 + (m2*306 + 5)/10 + (time_end - 1);
-       return (t2 - t1);
+    int i,leap;
+    leap = year%4 == 0 &&year%100 !=0||year%400 == 0;
+    for(i=1;i<month;i++)
+    day+=daytab[leap][i];
+    return day;
 }
-int main(void)
+void month_day(int year,int yearday,int *pmonth,int *pday)
 {
-       printf("%d\n", timediff(2019, 10, 9, 2020, 1, 1));
-       return 0;
+    int i,leap;
+    leap = year%4 == 0 && year%100 != 0||year%400 ==0;
+    for(i = 1;yearday>daytab[leap][i];i++)
+    yearday -= daytab[leap][i];
+    *pmonth = i;
+    *pday = yearday;
+}
+int main(int argc,char *argv[])
+{
+    int day=0;
+    for(int i = atof(argv[1])+1;i<atof(argv[4]);i++){
+        day += day_of_year(i,12,31);}
+    if(atof(argv[1]) < atof(argv[4]))
+        day += day_of_year(atof(argv[4]),atof(argv[5]),atof(argv[6])) + day_of_year(atof(argv[1]),12,31) - day_of_year(atof(argv[1]),atof(argv[2]),atof(argv[3])) + 1;
+    else if(atof(argv[1]) == atof(argv[4]))
+        day += day_of_year(atof(argv[4]),atof(argv[5]),atof(argv[6])) - day_of_year(atof(argv[1]),atof(argv[2]),atof(argv[3])) + 1;
+    printf("%d\n",day);
+    return 0;
 }

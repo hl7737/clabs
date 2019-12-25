@@ -1,15 +1,14 @@
-#include  <stdio.h>
+#include <stdio.h>
 int main()
 {
-    unsigned int a=1;
-    unsigned int b=1;
-    printf ("\n");
-    while (a=b)
+    unsigned int a = 1;
+    int b = 0;
+    while (a !=0)
     {
-           a=a*2;
-           b<<1;
-    if (a!=b)
-    printf("unsigned int的最大值:%u\n",b);
+        a=a<<1;
+        b=b+1; 
     }
+    printf("the amount is %d\n",b);
+    printf("the max is%u\n",a-1);
     return 0;
 }
