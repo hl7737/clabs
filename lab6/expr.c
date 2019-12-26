@@ -1,24 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #define MAXOP 100
 #define NUMBER '0'
-int getop(char s[]);
-void push(double);
-double pop(void);
-char s[MAXOP];
-main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+   int getop(char s[]);
+   void push(double);
+   double pop(void);
+   char s[MAXOP];
+    printf("RYY calculator tell you the result:");
     int type;
-    double op2;
-    int j = 1;
-    int a = argc;
-    while((argc--)>0 && j<a){
-    type = getop(argv[j++]);
+    double op1,op2,op3;
+    int ryy = 1;
+    int a;
+    a=argc;
+    while((argc--)>0 &&ryy<a){
+    type = getop(argv[ryy++]);
         switch (type)
         {
         case NUMBER:
-            push(atof(argv[j-1]));
+            push(atof(argv[ryy-1]));
             break;
         case '+':
             push(pop() + pop());
@@ -37,9 +38,27 @@ main(int argc, char *argv[])
             else
                 printf("error:zero divisor\n");
             break;
+        case '%':
+			op2 = pop();
+			op3 = pop();
+			if ((int)op2 == op2  && (int)op3 == op3 && op2 != 0 )
+				push((int)op3%(int)op2);
+			else
+				printf("error----------\n");
+			break;
+        case'c':
+		     op2=pop();
+		     push(op2);
+		     push(op2);
+		    break;
+		case's':
+		    op1=pop();
+		    op2=pop();
+		    push(op1);
+		    push(op2);
+		break;
         default:
-            printf("error:unknown command %s\n", s);
-            argc=1;
+            printf("error:unknown command %s\n", s);   
             break;
         }
     }
@@ -47,6 +66,7 @@ main(int argc, char *argv[])
     return 0;
 }
 #define MAXVAL 100
+#include <ctype.h>
 int sp = 0;
 double val[MAXVAL];
 void push(double f)
@@ -58,6 +78,14 @@ void push(double f)
         printf("error:stack full,can't push %g\n", f);
     }
 }
+int getop(char s[])
+{
+    if (*s> '9' || *s < '0')
+        return *s;
+    else
+       
+        return NUMBER;
+}
 double pop(void)
 {
     if (sp > 0)
@@ -67,11 +95,4 @@ double pop(void)
         printf("error:stack empty\n");
         return 0.0;
     }
-}
-int getop(char s[])
-{
-    if (*s> '9' || *s < '0')
-        return *s;
-    else
-        return NUMBER;     
 }
