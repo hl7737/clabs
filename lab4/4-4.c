@@ -1,10 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<ctype.h>
-
 #define MAXOP 100
 #define NUMBER '0'
-
 int getop(char[]);
 void push(double);
 double pop(void);
@@ -76,7 +74,6 @@ int main(){
     }
     return 0;
 }
-
 #define MAXVAL 100
 int sp = 0;
 double val[MAXVAL];
@@ -96,7 +93,6 @@ void push(double f){
             return 0.0;
         }
     }
-    
     int getch(void);
     void ungetch(int);
     int getop(char s[]){
@@ -129,9 +125,7 @@ void push(double f){
         if(bufp>=BUFSIZE)
         printf("ungetch:too many characters\n");
         else
-
         {
             buf[bufp++]=c;
         }
-        
     }
