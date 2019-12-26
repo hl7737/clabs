@@ -1,20 +1,17 @@
 #include <stdio.h>
-main()
+int main()
 {
-    int count = 0;
+    int count=0;
     int a=1;
     char b;
-    int c;
-    while((b=getchar())!='/n'){
+    int c=0;
+    while((b=getchar())!='\n'){
         c=c*10+(b-'0');
     }
-    int d=1;
-    while(a!=0){
-        a=a<<1;
-        d=a&c;
-        if(d!=0){
-            count++;
-        }
+    while(c!=0){
+        if((a&c)!=0) count++;
+        c=c>>1;
     }
     printf("%d\n",count);
+    return 0;
 }

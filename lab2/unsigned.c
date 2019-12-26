@@ -1,14 +1,13 @@
-#include <stdio.h>
+#include<stdio.h>
 int main()
 {
-    unsigned int a = 1;
-    int b = 0;
-    while (a !=0)
-    {
-        a=a<<1;
-        b=b+1; 
+    unsigned int x=1;
+    unsigned int a=0-1;
+    int count=0;
+    while(x !=0) {
+        x=x<<1;
+        count=count+1;
     }
-    printf("the amount is %d\n",b);
-    printf("the max is%u\n",a-1);
+    printf("%d\n%u\n",count,a);
     return 0;
 }
