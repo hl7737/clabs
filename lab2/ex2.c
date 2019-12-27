@@ -1,17 +1,22 @@
 #include <stdio.h>
+
 int main()
 {
-    int count=0;
-    int a=1;
-    char b;
-    int c=0;
-    while((b=getchar())!='\n'){
-        c=c*10+(b-'0');
+    int count =0;
+    char m;
+    int k=0;
+    int i=0;
+    printf("please input the number\n");
+    while((m=getchar())!='\n'){
+        k=k*10+(m-'0');
     }
-    while(c!=0){
-        if((a&c)!=0) count++;
-        c=c>>1;
+    while (k!=0){
+        i=k-(k/2)*2;
+        k=k/2;
+        if(i==1){
+            count++;
+        }
     }
-    printf("%d\n",count);
+    printf("the amount is:%d\n",count);
     return 0;
 }

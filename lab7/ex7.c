@@ -15,6 +15,6 @@ temp=a[c];
 a[c]=a[c+1];
 a[c+1]=temp;}
 }
-printf("The min is：%g\n",a[argc-2]);
+printf("The min is：%g\n",temp);
 return 0;
-}
+}                                                
