@@ -1,20 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 int main(int argc,char *argv[]){
-    double a[100];
-    int i =1;
-    int j = 0;
-    int c= 0;
-    double temp;
-    for(i=1;i<argc;i++,j++){
-        a[j]=atof(argv[i]);
+    double a[200];
+    int k=0,j=0;
+    for(k=1;k<argc;k++,j++){
+        a[j]=atof(argv[k]);
     }
-    for(c=0;c<argc-2;c++){
-     if(a[c]<a[c+1]) {
-temp=a[c];
-a[c]=a[c+1];
-a[c+1]=temp;}
+    int i;
+    double min=a[1];
+    for(i=0;i<argc-1;i++)
+{
+    if(a[i]<min){
+        min=a[i];
+    }
 }
-printf("The min is：%g\n",temp);
-return 0;
-}                                                
+printf("The min number is：");
+printf("%1.1f\n",min);
+}                                       

@@ -7,7 +7,7 @@ int main()
     int k=0;
     int i=0;
     printf("please input the number\n");
-    while((m=getchar())!='\n'){
+    while((m=getchar())!='\n'){ 
         k=k*10+(m-'0');
     }
     while (k!=0){
